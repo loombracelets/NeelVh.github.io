@@ -93,7 +93,7 @@ button {
 }
 .primary-btn {
   background-color: var(--base-shade-1);
-  color: var(--white-shade-1);
+  color: var(--black-shade-1);
 }
 .secondary-btn {
   border: 0.3rem solid var(--base-shade-1);
