@@ -122,7 +122,9 @@ nav a {
 }
 nav a#logo {
   color: var(--black-shade-1);
-  font-weight: 700;
+  font-weight: 900;
+  padding: 9px;
+  right: -90px;
 }
 nav ul a {
   color: var(--white-shade-1);
