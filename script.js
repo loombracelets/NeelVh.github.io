@@ -24,7 +24,6 @@ window.onscroll = () => {
   } else {
     header.classList.remove("sticky");
   }
-
   /* Scroll Top Button */
   if (pos > 300) {
     scrollTopBtn.style.display = "grid";
