@@ -162,6 +162,7 @@ body.dark .search-field input{
 body.dark .search-field i{
     color: var(--text-color);
 }
+
 /*------ Utility Classes ------*/
 
 section,
@@ -255,7 +256,7 @@ nav a#logo {
   padding: 9px;
 }
 nav ul a {
-  color: var(--white-shade-1);
+  color: var(--black-shade-1);
 }
 
 /*-- SideMenu --*/
