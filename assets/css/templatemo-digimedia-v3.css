@@ -33,26 +33,6 @@ font & reset css
 reset
 ---------------------------------------------
 */
-/*------ Variables ------*/
-:root {
-  --base-shade-1: #00a8fa;
-  --white-shade-1: #ffffff;
-  --white-shade-2: #d7e1f3;
-  --black-shade-1: #232323;
-  --black-shade-2: #676a8b;
-  --grad-color-1: 0, 180, 250;
-  --grad-color-2: 21, 120, 255;
-
-  --base-font-size: 1.6rem;
-
-  --heading-font-size-1: 4rem;
-  --heading-font-size-2: 3.2rem;
-  --heading-font-size-3: 2rem;
-  --heading-font-size-4: 1.8rem;
-
-  --border-radius-1: 1rem;
-  --border-radius-2: 0.5rem;
-}
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -1951,23 +1931,7 @@ footer p a {
   color: #fff;
   transition: all .5s;
 }
-/*------ Scroll Top Button ------*/
-#scroll-top {
-  position: fixed;
-  display: none;
-  place-items: center;
-  height: 5rem;
-  width: 5rem;
-  right: 3rem;
-  bottom: 3rem;
-  background-color: var(--base-shade-1);
-  color: var(--white-shade-1);
-  border: none;
-  outline: none;
-  font-size: var(--heading-font-size-3);
-  border-radius: var(--border-radius-2);
-  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.2);
-}
+
 /*
 ---------------------------------------------
 responsive
