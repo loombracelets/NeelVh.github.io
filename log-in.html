@@ -1,38 +1,105 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!-- === Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title> Responsive Login Form | CodingLab </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="log-in.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
 
-           <!-- Designed By CodingLab -->
+    <title>Login & Registration Form</title>
+</head>
+<body>
 
-  <body>
     <div class="container">
-      <form action="#">
-        <div class="title">Login</div>
-        <div class="input-box underline">
-          <input type="text" placeholder="Enter Your Email" required>
-          <div class="underline"></div>
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Enter Your Password" required>
-          <div class="underline"></div>
-        </div>
-        <div class="input-box button">
-          <input type="submit" name="" value="Continue">
-        </div>
-      </form>
-        <div class="option">or Connect With Social Media</div>
-        <div class="twitter">
-          <a href="#"><i class="fab fa-twitter"></i>Sign in With Twitter</a>
-        </div>
-        <div class="facebook">
-          <a href="#"><i class="fab fa-facebook-f"></i>Sign in With Facebook</a>
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Login</span>
+
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your email" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Enter your password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="logCheck">
+                            <label for="logCheck" class="text">Remember me</label>
+                        </div>
+
+                        <a href="#" class="text">Forgot password?</a>
+                    </div>
+
+                    <div class="input-field button">
+                        <input type="button" value="Login Now">
+                    </div>
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">Not a member?
+                        <a href="#" class="text signup-link">Signup now</a>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="form signup">
+                <span class="title">Registration</span>
+
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your name" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your email" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Create a password" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Confirm a password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="sigCheck">
+                            <label for="sigCheck" class="text">Remember me</label>
+                        </div>
+
+                        <a href="#" class="text">Forgot password?</a>
+                    </div>
+
+                    <div class="input-field button">
+                        <input type="button" value="Login Now">
+                    </div>
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">Not a member?
+                        <a href="#" class="text login-link">LogIn now</a>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
-  </body>
+
+    <script src="log-in.js"></script>
+
+</body>
 </html>
