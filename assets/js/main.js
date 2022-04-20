@@ -1,106 +1,211 @@
-(function () {
-  "use strict";
-
-  // ======= Sticky
-  window.onscroll = function () {
-    const ud_header = document.querySelector(".ud-header");
-    const sticky = ud_header.offsetTop;
-    const logo = document.querySelector(".header-logo");
-
-    if (window.pageYOffset > sticky) {
-      ud_header.classList.add("sticky");
-    } else {
-      ud_header.classList.remove("sticky");
-    }
-
-    // === logo change
-    if (ud_header.classList.contains("sticky")) {
-      logo.src = "assets/images/logo/logo.svg";
-    } else {
-      logo.src = "assets/images/logo/logo-white.svg";
-    }
-
-    // show or hide the back-top-top button
-    const backToTop = document.querySelector(".back-to-top");
-    if (
-      document.body.scrollTop > 50 ||
-      document.documentElement.scrollTop > 50
-    ) {
-      backToTop.style.display = "flex";
-    } else {
-      backToTop.style.display = "none";
-    }
-  };
-
-  // ===== responsive navbar
-  let navbarToggler = document.querySelector("#navbarToggler");
-  const navbarCollapse = document.querySelector("#navbarCollapse");
-
-  navbarToggler.addEventListener("click", () => {
-    navbarToggler.classList.toggle("navbarTogglerActive");
-    navbarCollapse.classList.toggle("hidden");
-  });
-
-  //===== close navbar-collapse when a  clicked
-  document
-    .querySelectorAll("#navbarCollapse ul li:not(.submenu-item) a")
-    .forEach((e) =>
-      e.addEventListener("click", () => {
-        navbarToggler.classList.remove("navbarTogglerActive");
-        navbarCollapse.classList.add("hidden");
-      })
-    );
-
-  // ===== Sub-menu
-  const submenuItems = document.querySelectorAll(".submenu-item");
-  submenuItems.forEach((el) => {
-    el.querySelector("a").addEventListener("click", () => {
-      el.querySelector(".submenu").classList.toggle("hidden");
+$(function() {
+    
+    "use strict";
+    
+    //===== Prealoder
+    
+    $(window).on('load', function(event) {
+        $('.preloader').delay(500).fadeOut(500);
     });
-  });
+    
+    
+    //===== Sticky
 
-  // ===== Faq accordion
-  const faqs = document.querySelectorAll(".single-faq");
-  faqs.forEach((el) => {
-    el.querySelector(".faq-btn").addEventListener("click", () => {
-      el.querySelector(".icon").classList.toggle("rotate-180");
-      el.querySelector(".faq-content").classList.toggle("hidden");
+    $(window).on('scroll', function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll < 20) {
+            $(".navbar-area").removeClass("sticky");
+            $(".navbar-area img").attr("src", "assets/images/logo.svg");
+        } else {
+            $(".navbar-area").addClass("sticky");
+            $(".navbar-area img").attr("src", "assets/images/logo-2.svg");
+        }
     });
-  });
 
-  // ===== wow js
-  new WOW().init();
+    
+    //===== Section Menu Active
 
-  // ====== scroll top js
-  function scrollTo(element, to = 0, duration = 500) {
-    const start = element.scrollTop;
-    const change = to - start;
-    const increment = 20;
-    let currentTime = 0;
+    var scrollLink = $('.page-scroll');
+    // Active link switching
+    $(window).scroll(function () {
+        var scrollbarLocation = $(this).scrollTop();
 
-    const animateScroll = () => {
-      currentTime += increment;
+        scrollLink.each(function () {
 
-      const val = Math.easeInOutQuad(currentTime, start, change, duration);
+            var sectionOffset = $(this.hash).offset().top - 73;
 
-      element.scrollTop = val;
+            if (sectionOffset <= scrollbarLocation) {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+            }
+        });
+    });
+    
+    
+    //===== close navbar-collapse when a  clicked
 
-      if (currentTime < duration) {
-        setTimeout(animateScroll, increment);
+    $(".navbar-nav a").on('click', function () {
+        $(".navbar-collapse").removeClass("show");
+    });
+
+    $(".navbar-toggler").on('click', function () {
+        $(this).toggleClass("active");
+    });
+
+    $(".navbar-nav a").on('click', function () {
+        $(".navbar-toggler").removeClass('active');
+    });
+    
+    
+    //===== Sidebar
+
+    $('[href="#side-menu-left"], .overlay-left').on('click', function (event) {
+        $('.sidebar-left, .overlay-left').addClass('open');
+    });
+
+    $('[href="#close"], .overlay-left').on('click', function (event) {
+        $('.sidebar-left, .overlay-left').removeClass('open');
+    });
+    
+    
+    //===== Slick
+
+    $('.slider-items-active').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        speed: 800,
+        arrows: true,
+        prevArrow: '<span class="prev"><i class="lni lni-arrow-left"></i></span>',
+        nextArrow: '<span class="next"><i class="lni lni-arrow-right"></i></span>',
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    arrows: false,
+                }
+            }
+        ]
+    });
+    
+    
+    //===== Isotope Project 4
+
+    $('.container').imagesLoaded(function () {
+        var $grid = $('.grid').isotope({
+            // options
+            transitionDuration: '1s'
+        });
+
+        // filter items on button click
+        $('.portfolio-menu ul').on('click', 'li', function () {
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({
+                filter: filterValue
+            });
+        });
+
+        //for menu active class
+        $('.portfolio-menu ul li').on('click', function (event) {
+            $(this).siblings('.active').removeClass('active');
+            $(this).addClass('active');
+            event.preventDefault();
+        });
+    });
+    
+    
+    //===== slick Testimonial Four
+    
+    $('.testimonial-active').slick({
+        dots: false,
+        arrows: true,
+        prevArrow: '<span class="prev"><i class="lni lni-arrow-left"></i></span>',
+        nextArrow: '<span class="next"><i class="lni lni-arrow-right"></i></span>',
+        infinite: true,
+       autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 800,
+        slidesToShow: 1,
+    });
+    
+    
+    //====== Magnific Popup
+    
+    $('.video-popup').magnificPopup({
+        type: 'iframe'
+        // other options
+    });
+    
+    
+    //===== Magnific Popup
+    
+    $('.image-popup').magnificPopup({
+      type: 'image',
+      gallery:{
+        enabled:true
       }
-    };
-
-    animateScroll();
-  }
-
-  Math.easeInOutQuad = function (t, b, c, d) {
-    t /= d / 2;
-    if (t < 1) return (c / 2) * t * t + b;
-    t--;
-    return (-c / 2) * (t * (t - 2) - 1) + b;
-  };
-
-  document.querySelector(".back-to-top").onclick = () => {
-    scrollTo(document.documentElement);
-  };
-})();
+    });
+    
+    
+    //===== Back to top
+    
+    // Show or hide the sticky footer button
+    $(window).on('scroll', function(event) {
+        if($(this).scrollTop() > 600){
+            $('.back-to-top').fadeIn(200)
+        } else{
+            $('.back-to-top').fadeOut(200)
+        }
+    });
+    
+    
+    //Animate the scroll to yop
+    $('.back-to-top').on('click', function(event) {
+        event.preventDefault();
+        
+        $('html, body').animate({
+            scrollTop: 0,
+        }, 1500);
+    });
+    
+    
+    //===== 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+});
